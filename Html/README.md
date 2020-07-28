@@ -106,9 +106,56 @@ In this type of list we care about the order.
 
 See example orderList.html
 
+## HiperText
 
+It allows to "jump" from one place to another one using links.
 
+### Link
 
+In order to use links we need to follow the next structure.
 
-## Atributes
+- `<a>` : Is the main tag that we must to use if we want to use links
 
+- `href` : Is the address to where we want to go when the user select the link.
+
+```html
+<a href="http://www.google.com"> Linked Text </a>
+```
+
+### Images
+
+In order to add images in our html pages we need to use the next structure.
+
+- `<img>` : Is the main tag when we want to add images in our document.
+
+- `<src>` : Is the first mandatory atribute for the img tag, means source and the value must be the address where is the image stored.
+
+- `<alt>` : Is the second mandatory img atribute and basically is used to show an alternative message when the image is not successfully load.
+
+```html
+<img
+    src="imageSource.jpg"
+    alt="Alternative message"
+    width="400"
+    height="300"/>
+```
+
+## Global Atributes
+
+We previously see that some specific tags have some atributes, for example the tag <a></a> has the atribute href or the tag <img></img> has the atributes src and alt, but there are other kind of atributes that we can apply to every single tag.
+
+### title
+
+Have you ever noticed that sometimes when we are in a webpage and leave the pointer over one component, one specific text appears?. This is the purpose of the title atribute, when you leave the pointer in a component is going to show a little text.
+
+### id
+
+This atribute allow us to identified an element. It is very important that if we want to use this atribute we must be sure that all the ids are unique.
+
+### class
+
+This atribute allow to identified a group of elements, so we can mark multiples element with the same class name.
+
+### lang
+
+It means languague and the purpose of this tag is to specify what is language use in the html page.
