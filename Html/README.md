@@ -1,35 +1,46 @@
-﻿# English
+﻿# Html
 
-### Index
+Hypertext Markup language is the standard markup language for documents designed to be displayed in a web browser.
 
-* [Times Structure](#time-structure)
-* [Narrative Tenses](#narritive-tenses)
+## First Steps
 
-#Time Structure
+In order to start with html documents, the only thing that we need to do is to create a file with the extension html.
 
-## Present Simple
+### What is a Tag?
 
-## Present Perfect
+Tag is one of the most important concepts of html and basically means all of those pre-defined syntax, that we can use in html.
 
-## Present Continues
+In order to write Tag we must use the next structure.
 
-## Present Perfect Continuous
+```html
+<tag-name>content</tag-name>
+<p> Paragraph </p>
+<h1> Title </h1>
+```
 
-## Past Simple
+### Basic Structure
 
-## Past Perfect
+In the next code we are going to see the basic structure for a html file.
 
-## Past Continues
+- `<!DOCTYPE html>` :This line defines that we are going to use HTML5 version.
 
-## Past Perfect Continuous
+- `<head>` : In the head taf is going to be all the general information of the document
 
-#Narrative Tenses
+- `<meta charset="UTF-8>` : Define which encoding type uses, UTF-8 is an world wide standard.
 
-Linking devices, help us to make a story more connected.
+- `<body>` : In the body tag is going to be all the content of the document like texts.
 
-I remember the first presentation that I presented to my team in globant was kinda funny and also embarasing. For this  
+````html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Example test</h1>
+    </body>
+</html>
+````
 
+## Atributes
 
-Months ago when i was presenting the first demo meeting in globant I made a huge error that was kinda funny and also embarrassing, while I was explaining everything about 
-the presentation I shared my screen with the purpose of showing the new features of the application however I didn't notice that I shared the wrong screen until I figured out that my team had been laughing about something
-finally I discovered that instead of showing the application I was showing a weird image that a co-worker just sent me. 
