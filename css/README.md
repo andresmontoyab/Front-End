@@ -261,3 +261,73 @@ p {
   height: 50px;
 }
 ```
+
+## Selectors
+
+### Descending
+
+When we have nested tag in our html, we can specify those nested elements creting a descending selector.
+
+```css
+ul li{
+    // Properties
+}
+
+ol li {
+    // Properties
+}
+```
+
+### Identifiers
+
+If in our html we have a tag with "id" we can create a selector to only select the element with the specific id.
+
+```html
+<h1 id="main">
+  Main Title
+</h1>
+```
+
+```css
+#main {
+  color: #00ff00;
+  font-size: 24px;
+}
+```
+
+### Classes
+
+If we want to have a spcific design for all the element that belongs to a class, we could use the operator "."
+
+```css
+.className {
+    font-size: 18px;
+}
+```
+
+## Pseudo Classes
+
+In order to use pseudo class we can use the symbol ":"  and there are multiples options.
+
+```css
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #0000ff;
+}
+
+a:visited {
+  color: #777777;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  font-weight: bold;
+}
+```
+
