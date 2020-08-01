@@ -185,7 +185,8 @@ Every single time that we write a tag in html this element draw a rectangule or 
 
 - content: In the content is going to be our text.
 
-![](https://github.com/andresmontoyab/Frontend/blob/master/resources/story-mapping.PNG)
+![](https://github.com/andresmontoyab/Front-End/blob/master/css/resources/box-model.PNG)
+
 
 - padding : Is the space between the content of the box and the external boundary. When
  
@@ -253,7 +254,7 @@ h3 {
 
 In order to modify the size of our bos we can use the next two properties.
 
-![](https://github.com/andresmontoyab/Frontend/blob/master/resources/story-mapping.PNG)
+![](https://github.com/andresmontoyab/Front-End/blob/master/css/resources/widht-height.PNG)
 
 ```css
 p {
