@@ -8,11 +8,25 @@ CSS is presentation lenguage that is used to modify the design of a web page.
 * [Typografhy](#Typografhy)
 * [Box Model](#Box-Model)
   * [Dimension](#Dimension)
+  * [Box Sizing](#Box-Sizing)
 * [Selectors](#Selectors)
   * [Descending](#Descending)
   * [Identifiers](#Identifiers)
   * [Classes](#Classes)
+  * [Universal](#Universal)
+  * [Child](#Child)
+  * [Grouping](#Grouping)
+  * [Adjacent](#Adjacent)
 * [Pseudo Classes](#Pseudo-Classes)  
+* [Backgrounds](#Backgrounds)
+* [Measure Unit](#Measure-Unit)
+  * [Absolute Measure Unit](#Absolute-Measure-Unit)
+    * [Pixel](#Pixel)
+  * [Relative Measure Unit](#Relative-Measure-Unit)
+    * [Percentage](#Percentage)
+    * [em](#em)
+    * [rem](#rem)
+
   
 ## First Steps
 
@@ -273,6 +287,69 @@ p {
 }
 ```
 
+### Box Sizing
+
+This property allow us to specify if the size of our box is going to include the padding and border dimenstion or if the specified widht and height are the total of the box.
+
+```css
+p {
+  box-sizing: content-box;
+  box-sizing: border-box;
+}
+```
+
+![](https://github.com/andresmontoyab/Front-End/blob/master/css/resources/box-sizing.PNG)
+
+#### Boxing Properties
+
+- max-width: Allow us to mark a max width for a box but this width is also variable.
+
+```css
+div {
+  max-width: 800px;
+}
+```
+
+- min-width: Allow us to mark a min widht for a box, but this width is variable.
+
+```css
+div {
+  min-width: 800px;
+}
+```
+
+
+- max-height: Allow us to mark a max height for a box but this height is also variable.
+
+```css
+div {
+  max-height: 800px;
+}
+```
+
+- min-height: Allow us to mark a min height for a box, but this height is variable.
+
+```css
+div {
+  min-height: 800px;
+}
+```
+
+- display: With this property we set up how we want to display our component.
+  - block: If we setup the display property as block, the component is going to be displayed as a box (with content, margen, border and padding).
+  - inline: This type flows like a text, so if the line finish the next value can continue in the next line.
+  - inline-block: This proprety is a hybrid between the two above options, and basically are box but those can be next to next.
+  - none: that means that the specific box are not going to be shown.
+
+```css
+div {
+  display: block;
+  display: inline;
+  display: inline-block;
+  display: none;
+}
+```
+
 ## Selectors
 
 ### Descending
@@ -316,6 +393,50 @@ If we want to have a spcific design for all the element that belongs to a class,
 }
 ```
 
+### Universal
+
+With the universal selector all the element inside our application are going to be affected.
+
+```css
+* {
+  // .. properties here
+}
+
+#id * {
+  // .. properties here
+}
+```
+
+### Child
+
+Child is very similar to the Descending selector, the only difference is that child(>) is just going to modify those element that are just one leve above, that means the children.
+
+```css
+ul>li {
+  // .. properties here
+}
+```
+
+### Grouping
+
+Let's say that we have to selectors with the same style rules, in order to evade write multiple time the same code, we can group the selectors and apply the same rules.
+
+```css
+h4, p.destacado {
+ // .. properties here
+}
+```
+
+### Adjacent
+
+If two elements are adjacent, we can create a selector that only is going to apply if those specific elements are adjacent.
+
+```css
+h1 + p {
+   // .. properties here
+}
+```
+
 ## Pseudo Classes
 
 In order to use pseudo class we can use the symbol ":"  and there are multiples options.
@@ -342,3 +463,188 @@ a:active {
 }
 ```
 
+### first-child
+
+If we want to style different the first child of a specific element, we can use this property.
+
+```css
+p:first-child {
+   // .. properties here
+}
+```
+
+### last-child
+
+If we want to style different the last child of a specific element, we can use this property.
+
+```css
+p:last-child {
+   // .. properties here
+}
+```
+
+### lang
+
+The pseudo-class lang means leanguage and help us to give style in base of the lenguage.
+
+```css
+p:lang(es) {
+
+}
+```
+
+### focus
+
+This pseudo class help us to identify where an specific element is being focused.
+
+```css
+input:focus {
+  // properties.
+}
+```
+
+### enabled
+
+Sometimes in our webpages we want a different style of those element that are enabled, in order to do that we can use the pseudo class "enabled"
+
+```css
+input:enabled {
+  // properties.
+}
+```
+
+### disabled
+
+Sometimes in our webpages we want a different style of those element that are disabled, in order to do that we can use the pseudo class "disabled"
+
+```css
+input:disabled {
+  // properties.
+}
+```
+
+## Backgrounds
+
+There are several properties to modify the backgroung, in the next sections we are going to check it:
+
+- background-color : With this property we are going to set a color for the background
+
+```css
+div {
+  background-color: #ff0000;
+}
+```
+
+- background-image : With this property we are going to set a specific image as background
+
+```css
+div {
+  background-image: url("my_image.jpg");
+}
+```
+
+- background-repeat : When we apply the property background-image the image is going to be repeated multiples times, in order to control that we can use this property
+
+```css
+.box1 {
+  background-repeat: no-repeat; // With this value the image ist not going to repeated.
+}
+.box2 {
+  background-repeat: repeat-x; // The image is going to be repeated horizontally
+}
+.box3 {
+  background-repeat: repeat-y; //The image is going to be repeated vertically
+}
+```
+
+- background-position: When we aplpied background-image and background-repeat as no-repeat the image is going to appear in the left top of the box, in order to set the position of the image inside the box we can use this property.
+  - We can use the next key words like right, left, top, botton or center.
+  - We can use pixeles in order to set the position
+
+```css
+.div {
+  background-position: top center;
+}
+.p {
+  background-position: 20px 10px;
+}
+```
+
+## Measure Unit
+
+### Absolute Measure Unit
+
+The absolute measure unit are those unit in where the size is fixed and does not matter the devices in where you are seeing it.
+
+#### Pixel
+
+In css one of the most used absolute measure unit  is the pixel which symbol is "px".
+
+```css
+.p {
+  width: 500px;
+}
+```
+
+### Relative Measure Unit
+
+Currently we have to create applications for multiples devices, in this scenarios is not recommended to use absolute measure unit because maybe some devices are to little or to big to support 300px, so in this cases we can use relate measure unit.
+
+#### Percentage
+
+The relative measure unit percentage is mark as "%" and basically means that the box is going to use the specific percentage avaiable in that box.
+
+```css
+h1 {
+  width: 80%;
+  margin-right: 25%;
+  font-size: 200%; // This 200% means different, with font-size that means that the size is going to be the double of the in
+}
+```
+
+There is another use of the percentage symbol and is related to the font-size, when we use the property font-size with %, the % is going to mean that the font size is the % of the inherited font size.
+
+```css
+body {
+  font-size: 16px;
+}
+h1 {
+  font-size: 200%; // 32px
+}
+h2 {
+  font-size: 50%; // 16px
+}
+```
+
+#### em
+
+This relative measure unit depends only of the font-size. The em is always going to depend to the font-size
+
+```css
+body {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 2em; // 40px or 200% 
+}
+
+p {
+  font-size: 24px;
+  margin-top: 1em; /* 1 x 24 = 24px */
+  margin-bottom: 1em; /* 1 x 24 = 24px */
+}
+```
+
+#### rem
+
+It means root em, the only difference with em is that rem is always going to depend to the root(html) font size and not of the relative box font size.
+
+```css
+html {
+  font-size: 20px;
+}
+p {
+  font-size: 1.2rem;
+}
+```

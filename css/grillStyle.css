@@ -1,0 +1,24 @@
+#header {
+    background-color:cornsilk;
+}
+
+#main {
+    float: left;
+    width: 60%;
+    background-color:darkgrey;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#second {
+    float: right;
+    width: 40%;
+    background-color:darkslategray;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#footer{
+    clear: both;
+    background-color:firebrick;
+}

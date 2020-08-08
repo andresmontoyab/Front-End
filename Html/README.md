@@ -11,11 +11,15 @@
 * [HiperText](#HiperText)
     * [Link](#Link)
     * [Images](#Images)
+    * [Nav](#Nav)
 * [Global Atributes](#Global-Atributes)
     * [title](#title)
     * [id](#id)
     * [class](#class)
     * [lang](#lang)
+* [Media Tags](#Media-Tags)    
+    * [Audio](#Audio)
+    * [Video](#Video)
 
 Hypertext Markup language is the standard markup language for documents designed to be displayed in a web browser.
 
@@ -71,7 +75,9 @@ In the next code we are going to see the basic structure for a html file.
 
 - `<strong>` : This tag is used to highlight a specific text inside a paragraph.
 
-- `<em>` :This tag is used to write text in italic.
+- `<em>` : This tag is used to write text in italic.
+
+- `<time>` : With this tag we are going to say that the content is a date-time.
 
 ### Div
 
@@ -83,7 +89,7 @@ In the next example we are going to wrap some text tag in a div.
 <div>
     <p>This paragrahp talk about topic a</p>
     <p>This topic a too.</p>
-    <p>This too.</p>
+    <p>This too. <time datetime="2020-01-01"> First January 2020</p>
 </div>
 ```
 
@@ -156,6 +162,20 @@ In order to add images in our html pages we need to use the next structure.
     width="400"
     height="300"/>
 ```
+### Nav
+
+Usually we have in our web pages navegation, that means that we can move to different html documents in the same web page, in order to define the navegation we can use the tag Nav.
+
+```html
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Serivces</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact">Contacts</a></li>
+  </ul>
+</nav>
+```
 
 ## Global Atributes
 
@@ -176,3 +196,31 @@ This atribute allow to identified a group of elements, so we can mark multiples 
 ### lang
 
 It means languague and the purpose of this tag is to specify what is language use in the html page.
+
+## Media Tags
+
+There are some tags that we used  when we need to deal with media information like audios or video information.
+
+### Audio
+
+If you're dealing with audios, html5 allow you to use one specific tag called `<audio>`, If you add the controls atribute then the stop and play options are going to be available in the web page.
+
+```html
+<audio controls>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="horse.mp3" type="audio/mpeg">
+  <p>Alternative Content for the old browsers</p>
+</audio>
+```
+
+### Video
+
+Otherwise if you're dealing with videos you can use the tag `<video>`, the video tag has some extra atributes like width, height, poster(The preview image just before play the video) and controls(play and stop controls).
+
+```html
+<video controls width="320" height="240" poster="images/movie.gift">
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  <p>Alternative Content for the old browsers</p>
+</video>
+```
