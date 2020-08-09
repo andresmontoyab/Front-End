@@ -350,6 +350,73 @@ div {
 }
 ```
 
+- border-radius: Is a property that let us modify the corner of the box and make it round
+
+```css
+h1 {
+  border-radius: 3px;
+}
+
+h2 {
+  border-radius: 5% 5% 10em 10em; // top-right, top-left, bottom-left, bottom-right
+}
+```
+
+- box-shadow: this property let us add shadows to our boxes
+
+```css
+h1 {
+  box-shadow: #000 10px 10px 0; // color movx movy blur
+}
+
+h2 {
+  box-shadow: 10px 10px 5px #000;
+}
+
+h3 {
+  box-shadow: #000 5px -7px 3px inset;
+}
+```
+
+- text-shadow: this property let us add shadows to our texts
+
+```css
+h1 {
+  text-shadow: 2px 5px 0 #f00;
+}
+```
+
+- transform: there is a property that let us transform our box.
+  - rotate: this sub property let us rotate the box, the parameter that this property receive are the amount of degrees.
+  - translateX : Move the box in the x dimension
+  - translateY : Move the box in the Y dimension
+
+```css
+h1 {
+  transform: rotate(45deg) translateX(10px) translateY(20px) skew(8deg);
+}
+```
+
+- transition: This property is very usefull when we are working with animations, basically we can indicate which property we want to animate and how many time should take the animation.
+
+```css
+a {
+  background: #ff0000;
+  transition: background 0.5s;
+}
+a:hover {
+  background: #ff4444;
+}
+
+h1 {
+  background: #ff0000;
+  transition: all 500ms;
+}
+h1:hover {
+  background: #ff4444;
+}
+```
+
 ## Selectors
 
 ### Descending
@@ -437,6 +504,44 @@ h1 + p {
 }
 ```
 
+### With Atribute
+
+We can create selector that check the html atributes
+
+- `[]` : Within this symbols we are going to write the specific atributes to check.
+- `~` : Some atributes can have multiple values, with this symbol we check if some of those value match the value write in the selector.
+- `|` : check if the atribute has the exact value or is after a `-`
+- `^` : This symbol indicate if the atribute start with the value
+- `$` : This symbol indicate if the atribute ends with the value
+- `*` : This symbol indicate if the atribute contains the value
+
+```css
+a[href="http://www.google.com"] {
+  background: #ff0;
+}
+
+a[class~="button"] {
+  background: #eee;
+  border-radius: 3px;
+}
+
+li[class|="nav"] {
+  background: #eee;
+}
+
+a[href^="http://"] {
+  background: #eee;
+}
+
+p[class$="-error"] {
+  color: #f00;
+}
+
+a[class*="button"] {
+  background: #ff0;
+}
+```
+
 ## Pseudo Classes
 
 In order to use pseudo class we can use the symbol ":"  and there are multiples options.
@@ -520,6 +625,85 @@ Sometimes in our webpages we want a different style of those element that are di
 ```css
 input:disabled {
   // properties.
+}
+```
+
+#### nth-child
+
+Previously we define the last-child and first-child pseudo class, the nth-child let us select the child in the position n and apply the style.
+
+```css
+p:nth-child(3) {
+  font-size: 1.5em;
+  color: #444;
+}
+```
+
+#### first-line
+
+This pseudo class let us modify just the first line of a text.
+
+```css
+p:first-line {
+  font-size: 1.3em;
+}
+```
+
+#### first-letter
+
+This pseudo class let us modify just the first letter  of a text.
+
+```css
+p:first-letter {
+  font-size: 1.3em;
+}
+```
+
+#### not
+
+This pseudo class let us exclude some element from our selectors.
+
+```css
+div:not(.contenedor) {
+  font-size: 2em;
+  color: #f00;
+}
+```
+
+#### empty
+
+The empty pseudo class let us modify an element only if this element is empty.
+
+```css
+div:empty {
+  background-color: #000;
+}
+```
+
+#### before
+
+Let us add some specific content just before the element.
+
+```css
+h1:before {
+  content: "- ";
+  color: #888;
+}
+
+h2::before { // double : for pseudo element
+  content: "- ";
+  color: #888;
+}
+```
+
+#### after
+
+Let us add some specific content just after the element.
+
+```css
+h1::after {
+  content: " -";
+  color: #888;
 }
 ```
 
@@ -648,3 +832,10 @@ p {
   font-size: 1.2rem;
 }
 ```
+
+## SASS and LESS
+
+SASS and LESS are pre-processors that can help us to similar write css code that is easy to mantain in the future.
+
+
+

@@ -8,11 +8,17 @@
     background-color:darkgrey;
     box-sizing: border-box;
     padding: 20px;
+    box-shadow: #000 20px 10px 1px;
+    transition: background 5s;
+}
+
+#main :hover {
+background: #ff4444;
 }
 
 #second {
     float: right;
-    width: 40%;
+    width: 30%;
     background-color:darkslategray;
     box-sizing: border-box;
     padding: 20px;
