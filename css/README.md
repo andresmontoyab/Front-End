@@ -26,8 +26,13 @@ CSS is presentation lenguage that is used to modify the design of a web page.
     * [Percentage](#Percentage)
     * [em](#em)
     * [rem](#rem)
-
+* [Animations](#Animations)
+  * [Transform](#Transform)
+  * [Transitions](#Transitions)
+  * [KeyFrames](#KeyFrames)
+  * [Css Animations Libraries](#Css-Animations-Libraries)
   
+
 ## First Steps
 
 In order to start with css we need first need to create some basic html document.
@@ -383,37 +388,6 @@ h3 {
 ```css
 h1 {
   text-shadow: 2px 5px 0 #f00;
-}
-```
-
-- transform: there is a property that let us transform our box.
-  - rotate: this sub property let us rotate the box, the parameter that this property receive are the amount of degrees.
-  - translateX : Move the box in the x dimension
-  - translateY : Move the box in the Y dimension
-
-```css
-h1 {
-  transform: rotate(45deg) translateX(10px) translateY(20px) skew(8deg);
-}
-```
-
-- transition: This property is very usefull when we are working with animations, basically we can indicate which property we want to animate and how many time should take the animation.
-
-```css
-a {
-  background: #ff0000;
-  transition: background 0.5s;
-}
-a:hover {
-  background: #ff4444;
-}
-
-h1 {
-  background: #ff0000;
-  transition: all 500ms;
-}
-h1:hover {
-  background: #ff4444;
 }
 ```
 
@@ -833,9 +807,284 @@ p {
 }
 ```
 
+## Animations
+
+### Transform
+
+The transform property is going to help us to create animations, this property let us apply some movement to elements in order to make more frendly our interfaces. There are two things to keep in mind when we are using transform.
+1. Everything is going to be position relative.
+2. Transform modifies all the element.
+
+
+- rotate: The subproperty rotate is going to rotate a specific amount of degrees our elements.
+  - If our degrees are positives this is going to rotate to the right.
+  - If our degrees are negatives this is going to rotate to the left.
+  - If we want more than one turn, we can specified the amount of turns
+
+```css
+div:hover {
+  transform: rotate(45deg);
+}
+
+h1:hover {
+  transform: rotate(-45deg);
+}
+
+button:hover {
+  transform: rotate(rotate(3.5turn));
+}
+```
+
+- skew : It is a property that let us incline the element.
+  - We can incline for both dimension x and y.  ex: skew(25deg, 30deg), that means that we are going to incline 25 degrees in x and 30 degres in y.
+
+```css
+div:hover {
+  transform: skew(25deg,35deg);
+}
+```
+
+- scale: this property let us increase the size of the elements.  
+
+```css
+div:hover {
+  transform: scale(1.5); // scale x and y 1.5 times
+}
+
+button:hover {
+  transform: scale(1.5, 2); // scale x 1.5 times and y 2 times
+}
+```
+- translate: This property let us to move the element in x and y.
+
+```css
+button:hover {
+  transform: translate(45px,20px); // move 45px in x and 20px in y
+}
+```
+
+- transform-origin: usually when we use the property transform, the base point (x,y) is where the element is, with transform-origin we can move that initial point to another one.
+
+```css
+#element{
+  transform-origin: bottom right;
+}
+#element:hover{
+  transform: rotate(30deg);
+}
+```
+
+#### Applying multiple properties in transform
+
+If we want to apply multiples properties at the same time we can do it separating the properties by a space, it is important to keep in mind that the transformations are going to be applied in the left-right order that you wrote it.
+
+```css
+#elemento{
+	transform: rotate(-15deg) skew(0, 25deg) scale(1, 0.5) translate(20px,10px);
+}
+```
+
+### Transitions
+
+ This property is very usefull when we are working with animations, basically we can indicate which property we want to animate and how many time should take the animation. There are few point that we kee in mind.
+  - The transition property goes in the non-hover selector.
+  - transition-property is the name of the property that we want to animate.
+  - transition-duration is the time that the transition is going to take.
+
+```css
+#one { 
+  background: #900;
+  transition-property: background;
+  transition-duration: 2s;
+}
+#one:hover {
+  background: #009;
+  border-radius: 50%;
+}
+
+a {
+  background: #ff0000;
+  transition: background 0.5s;
+}
+a:hover {
+  background: #ff4444;
+}
+
+h1 {
+  background: #ff0000;
+  transition: all 500ms;
+}
+h1:hover {
+  background: #ff4444;
+}
+```
+
+#### Delay
+
+Something we want that our transitions start after a few seconds, in order to make this happen we can use the dalay property.
+
+```css
+#element {
+  transition-property: height;
+  transition-duration: 2s;
+  transition-delay: 3s;
+}
+#element:hover {
+	height: 75px;
+}
+```
+
+Something we have multiples transition wiht multiples delay, in order to combine multiple transition with those delays with can apply the next structure.
+  - Keep in mind that when we are dealing with multiples delay you must keep in mind the delay of the previous transition.
+
+```css
+div {
+  width: 200px;
+  height: 200px;
+  background-color: #900;
+  color: white;
+  line-height: 200px;
+  text-align: center;
+  margin: 50px auto;
+}
+#linea {
+  line-height: 0px;
+  transition-property: line-height, background-color, border-radius, border-radius;
+  transition-duration: 3s, 2s, 1s;
+  transition-delay: 0s, 3s, 5s;
+}
+#linea:hover{
+  line-height: 200px; /* 3s*/
+  background-color: #090; /* 2s*/
+  border-radius: 50%; /* 1s*/
+}
+```
+
+#### Acelerations
+
+When we are dealing with transition usually all the movements are applied at the same speed but if we want to change that speed with time we need the conceptos acelarations. In order to do that css give a property called trasition-timing-function that let us change the speed.
+
+- ease-out: faster at the beginning and with time gets slower
+- ease-in: slow at the beginning and with time get faster.
+- linear: it does not have any kind of change
+- cubic-bezier: If you want to create custom movements you can use the function cubic-bezier
+
+```css
+#one {
+  transform-origin: center left;
+  transition-property: all;
+  transition-duration: 1.2s;
+  transition-timing-function: ease-out;
+}
+#one:hover {
+  transform: scale(2.4,1);
+  background: #ff6;
+}
+```
+
+### KeyFrames
+
+With keyframe we are able to create more complex animations than the transition, some of the differences with the transitions are:
+
+1. I can divide an animations into multiples keyframes. So that means more rich animations
+2. I dont need to way until the hover.
+3. You can repeat keyframes but you're not able to repeat transitions
+
+ ```css
+ @keyframes color {
+   from {
+    background: blue;
+  }
+  to {
+    background: violet;
+  }
+}
+#color{
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  animation-name: color;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+}
+ ```
+
+- animation-itearation-count: If you want to repeat a animation using keyframes you should use this property
+  - If you put the value of "infinite" the animations is going to repeat infinite times.
+
+```css
+@keyframes color{
+  0%{
+    background: blue;
+  }
+  100%{
+    background: violet;
+  }
+}
+
+#color {
+  animation-name: color;
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+}
+```
+
+- animation-direction : with keyframes we can set a specific direction of our animations, usually the animations start in 0% and goes to 100% but we can modifies that.
+  - normal : Start in 0 % and goes to 100%
+  - reverse : Start in 100 % and goes to 0%
+  - alternate : Start in 0 % goes to 100% and after that 100% to 0%
+  - alternate-reverse : Start in 100 % goes to 0% and after that 0% to 100%
+
+```css
+@keyframes rotate{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+#rotar {
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate-reverse;
+}
+```
+
+- play-state: We can stop the animation when the user put the click in the element(hover) using the play-state property.
+
+```css
+@keyframes rotate {
+  100%{
+    transform: rotate(360deg);
+  }
+}
+#rotar {
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+  animation-play-state: paused;
+}
+#rotar:hover {
+  animation-play-state: running;
+}
+```
+
+- fill-mode : This property help us to define, what happens when the animations finish, there are two options.
+  - forwards : After the animation finish our element is going to keep the last keyframe (100%)
+  - backwards : After the animation finish our element is going to keep the first keyframe (0%)
+
+### Css Animations Libraries
+
+There are some already created library with some animations that can helps to create a web page with animations faster, some of those are:
+
+1. Animate CSS
+2. CSS Shake
+3. Wow.js
+
 ## SASS and LESS
 
 SASS and LESS are pre-processors that can help us to similar write css code that is easy to mantain in the future.
-
-
-
