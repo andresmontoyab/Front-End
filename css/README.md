@@ -31,7 +31,17 @@ CSS is presentation lenguage that is used to modify the design of a web page.
   * [Transitions](#Transitions)
   * [KeyFrames](#KeyFrames)
   * [Css Animations Libraries](#Css-Animations-Libraries)
-  
+* [Preprocessor](#Preprocessor)
+  * [Sass](#Sass)
+    * [Variables](#Variables)
+    * [Conditionals](#Conditionals)
+    * [List](#List)
+    * [Loops](#Loops)
+    * [Nesting](#Nesting)
+    * [Extend](#Extend)
+    * [Mixin](#Mixin)
+    * [Functions](#Functions)
+    * [Maps](#Maps)
 
 ## First Steps
 
@@ -1288,6 +1298,7 @@ body{
 	}
 }
 ```
+
 ### Extend
 
 Sometimes we need a base selector to be used in different parts, in order to dont duplicate the selector we can just write one and ise the @extend feature of sass.
