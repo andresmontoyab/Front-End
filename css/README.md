@@ -1085,6 +1085,301 @@ There are some already created library with some animations that can helps to cr
 2. CSS Shake
 3. Wow.js
 
-## SASS and LESS
+## Preprocessor
 
-SASS and LESS are pre-processors that can help us to similar write css code that is easy to mantain in the future.
+SASS and LESS are pre-processors that can help us to write similar css code that is easy to mantain in the future.
+
+### Sass
+
+Sass is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets
+
+- compilers : The compiler let us to process our Sass code and transform into CSS code
+  - ruby: Ruby provide us a cli-compiler, so in order to start with this guide you are going to need to install ruby in your machine.
+  - gui: prepros,codekit, scout are options to compile sass code into css code wiht a gui.
+  - online: codepen, sassmeister are online compilers.
+
+gem install sass.
+
+sass estilos.scss gemerado.css // command
+sass --watch estilos.scss:estilos.css // automatic generation
+
+#### Sass vs Sassy
+
+- Sass
+  - We dont longer need to write the `{}` or  `;`
+  - We need very good knoweldge in css
+  - we need to implement good tabulation rules.
+
+```scss
+$sans: "Open Sans", sans-serif
+$serif: "Times New Roman", serif
+
+body
+  font-family: $sans
+  color: #900
+```
+
+- Sassy
+  - We need very good knoweldge in css
+  - We mark the file as .scsss
+
+```scss
+$sans: "Open Sans", sans-serif;
+$serif: "Times New Roman", serif;
+
+body{
+  font-family: $sans;
+  color: #900;
+}
+```
+
+### Variables
+
+When we are working with Sass we are able to use variables.
+  - When you create a variable you must use the symbol `$`.
+  - Variables in Sass are not strong typed.
+
+```scss
+$base-color: #300;
+$second-color: red;
+$width: 300px;
+
+body{
+	background-color: $base-color;
+	.wrapper{
+		width: $width / 150px;
+	}
+}
+```
+
+### Conditionals
+
+Also if you want to check the type of a variable, you can use the `@if` exapresion
+
+```scss
+$color-base: #300;
+@if type-of($color-base) == color {
+    /* Do Something */
+} @else {
+
+}
+```
+
+### List
+
+There is just one thing to remember regarding the sass list, those list are 1-index
+
+```scss
+$colors: red, black, white;
+
+body{
+  background-color: nth($colors, 1);
+}
+```
+
+There are soem very useful function for Sass Lists.
+  - nth : return the element in the position n nth($list, n)
+  - length: return the size of the list
+
+### Loops
+
+@each
+
+```scss
+$colors: red, yellow, green, blue;
+ 
+ @each $value in $colors {
+   body {
+    	background-color: $value;
+   }
+}
+```
+
+@each
+
+```scss
+$socialNetworks:  "facebook", "twitter", "linkedin", "youtube";
+$height: 0px; 
+
+@each $valor in $redes {
+  .#{$valor}-icon {
+    background-image: url('https://resources.acamica.com/gx3253z/b_redes.svg');
+	background-position: 0 $alto;
+  }
+/* 22px para que nos tomen los 2px que viene por defecto */
+  $alto: $alto + 22;
+}
+}
+```
+
+@while
+
+```scss
+$divs: 5;
+$divs-width: 10%;
+
+
+@while $divs > 0{
+  .el-#{$divs}{
+		width: $divs-width + $divs;
+	}
+	$divs: $divs - 1;
+}
+```
+
+@for
+
+```scss
+@for $i from 1 through 4{
+  .el-#{$i}{
+		width: 20 + $i;
+	}
+}
+```
+
+### Nesting
+
+With Sass we can have nesting selectors.
+  - Even that the nesting feature in sass is very useful it is recommended to at most apply 3 leve of nest
+  - the `&` symbol is going to represent the previous element of the selector.
+
+```scss
+$sans: "Open Sans", sans-serif;
+$serif: "Times New Roman", serif;
+
+body{
+  font-family: $sans;
+  color: #900;
+  h2{
+    color: violet;
+  }
+  p{
+    text-decoration: none;
+        &:hover{
+      text-decoration: underline;
+      }
+  }
+}
+
+.cabecera{
+	.contenedor &{
+		background-color: red;
+	}
+}
+```
+
+#### Nested Media Query
+
+With Sass we can apply nested media queries like the next example:
+
+```scss
+$sans: "Open Sans", sans-serif;
+$serif: "Times New Roman", serif;
+
+body{
+	font-family: $sans;
+	color: #900;
+	h1{
+		color: violet;
+  		@media (max-width: 768px){
+			color: blue;
+			text-align: right;
+		}
+	}
+}
+```
+### Extend
+
+Sometimes we need a base selector to be used in different parts, in order to dont duplicate the selector we can just write one and ise the @extend feature of sass.
+
+```scss
+.message {
+  border: 1px solid #999;
+  padding: 10px;
+  color: #000;
+}
+
+.success {
+   @extend .message;
+   border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+} 
+```
+
+### Mixin
+
+Mixin is a variation of the extend but it also give us the chance to pass parameters.
+
+```scss
+@mixin imgs($name, $color){
+  color: $color;
+  background-image: url("./imgs/"+$name+".jpg");
+  content: $name;
+}
+
+.facebook {
+  @include imgs("facebook","blue");
+}
+
+.pinterest {
+  @include imgs("pinterest","red");
+}
+```
+
+### Functions
+
+Saas also provide us a way to create custom functions when we require it.
+
+```css
+@function calculate($num1, $num2){
+	@return $num1 + $num2;
+  }
+
+.checkout{
+	width: calculate(15px, 20px);
+}
+```
+
+### Maps
+
+Map are pretty much as dictionaries, Sass provide us some features to deal with maps.
+
+ ```scss
+$red: (
+	color: #CCC,
+	background-color: #ff0000,
+);
+
+$black: (
+	color: #CCC,
+	background-color: #000,
+);
+```
+
+#### Maps Functions
+
+In order to retrieve the information of our created maps we can use the next approaches.
+  - map-get function
+  - @each over the map
+
+```scss
+$red: (
+	color: #ff0000,
+	background-color: #333,
+	text-shadow: 0 0 1px #99F
+);
+
+.elemento{
+	background-color: map-get($red,color);
+}
+
+.elemento{
+	@each $key, $valor in $red{
+    #{$key}: #{$valor};
+  }
+}
+```
