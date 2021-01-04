@@ -5,6 +5,7 @@ CSS is presentation lenguage that is used to modify the design of a web page.
 
 * [First Steps](#First-Steps)
 * [CSS Syntax](#CSS-Syntax)
+* [Prefix](#Prefix)
 * [Typografhy](#Typografhy)
 * [Box Model](#Box-Model)
   * [Dimension](#Dimension)
@@ -91,6 +92,29 @@ h1 {
   font-size: 24px;
 }
 ```
+
+## Prefix
+
+CSS vendor prefixes, also sometimes known as or CSS browser prefixes, are a way for browser makers to add support for new CSS features before those features are fully supported in all browsers
+
+Common Prefix
+
+- -webkit: Android
+- -webkit-: Chrome
+- -moz-: Firefox
+- -ms-: Internet Explorer
+- -webkit-:iOS
+- -o-: Opera
+
+```css
+-webkit-transition: all 4s ease;
+-moz-transition: all 4s ease;
+-ms-transition: all 4s ease;
+-o-transition: all 4s ease;
+transition: all 4s ease; 
+```
+
+In the above example we saw how to use some prefix.
 
 ## Typografhy
 
